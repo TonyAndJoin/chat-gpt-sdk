@@ -16,15 +16,16 @@ import java.util.List;
 
 public class DemoTest {
 
-    private static final String URL = "https://api.openai.com/v1";
-
-    private static final String KEY = "";
+    private static final String API_ENDPOINT = "https://api.openai.com/v1";
+    private static final String API_KEY = "";
+    private static final String proxyIp = "";
+    private static final Integer proxyPort = 0;
 
     public static void main(String[] args) {
 
 //        testAuthClient();
 
-//        testFastAsk("spring是什么");
+        testFastAsk("spring是什么");
 
 //        testCreateChat();
 
@@ -129,9 +130,7 @@ public class DemoTest {
     }
 
     private static AuthClient getAuthClient() {
-        AuthClient authClient = new AuthClient();
-        authClient.setApiBaseUrl(URL);
-        authClient.setApiKey(KEY);
+        AuthClient authClient = new AuthClient(API_KEY,API_ENDPOINT,proxyIp,proxyPort);
         return authClient;
     }
 

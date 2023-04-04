@@ -8,7 +8,10 @@ import okhttp3.*;
 import org.apache.commons.collections4.MapUtils;
 
 import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
@@ -23,8 +26,8 @@ public class OkHttps {
             .writeTimeout(60L,TimeUnit.SECONDS)
             .connectTimeout(60L,TimeUnit.SECONDS);
 
-    public static String post(String url, String body, Map<String, String> header) {
-        OkHttpClient okHttpClient = builder.build();
+    public static String post(String url, String body, Map<String, String> header,Proxy proxy) {
+        OkHttpClient okHttpClient = getOkHttpClient(proxy);
 
         Request.Builder builder = new Request.Builder()
                 .post(RequestBody.create(MediaType.get("application/json"), body))
@@ -47,8 +50,18 @@ public class OkHttps {
         }
     }
 
-    public static String postFrom(String url, String body, Map<String, String> header, ImageEditFileDTO... files) {
-        OkHttpClient okHttpClient = builder.build();
+    private static OkHttpClient getOkHttpClient(Proxy proxy) {
+        OkHttpClient okHttpClient;
+        if(Objects.isNull(proxy)){
+            okHttpClient = builder.build();
+        }else{
+            okHttpClient = builder.proxy(proxy).build();
+        }
+        return okHttpClient;
+    }
+
+    public static String postFrom(String url, String body, Map<String, String> header, Proxy proxy, ImageEditFileDTO... files) {
+        OkHttpClient okHttpClient = getOkHttpClient(proxy);
 
         MultipartBody.Builder bodyBuilder= new MultipartBody.Builder().setType(MultipartBody.FORM);
 
@@ -80,9 +93,9 @@ public class OkHttps {
         }
     }
 
-    public static String get(String url, Map<String, String> header) {
+    public static String get(String url, Map<String, String> header,Proxy proxy) {
 
-        OkHttpClient okHttpClient = builder.build();
+        OkHttpClient okHttpClient = getOkHttpClient(proxy);
 
         Request.Builder builder = new Request.Builder()
                 .get()
@@ -105,9 +118,9 @@ public class OkHttps {
         }
     }
 
-    public static String delete(String url, Map<String, String> header) {
+    public static String delete(String url, Map<String, String> header,Proxy proxy) {
 
-        OkHttpClient okHttpClient = builder.build();
+        OkHttpClient okHttpClient = getOkHttpClient(proxy);
 
         Request.Builder builder = new Request.Builder()
                 .delete()

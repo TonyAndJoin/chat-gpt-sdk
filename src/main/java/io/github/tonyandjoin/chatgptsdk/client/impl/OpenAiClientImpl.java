@@ -38,35 +38,35 @@ public class OpenAiClientImpl implements OpenAiClient {
         Map<String,String> header = new HashMap<>(8);
         header.put(BizConstant.Authorization,authClient.getApiKey());
         header.put(BizConstant.ContentType, BizConstant.contentValue);
-        return OkHttps.post(authClient.getApiBaseUrl() + model.getUrl(), param, header);
+        return OkHttps.post(authClient.getApiBaseUrl() + model.getUrl(), param, header,authClient.getProxy());
     }
 
     public String post(String url,String param){
         Map<String,String> header = new HashMap<>(8);
         header.put(BizConstant.Authorization,authClient.getApiKey());
         header.put(BizConstant.ContentType, BizConstant.contentValue);
-        return OkHttps.post(authClient.getApiBaseUrl() + url, param, header);
+        return OkHttps.post(authClient.getApiBaseUrl() + url, param, header,authClient.getProxy());
     }
 
     public String postForm(Model model, String param, ImageEditFileDTO... files){
         Map<String,String> header = new HashMap<>(8);
         header.put(BizConstant.Authorization,authClient.getApiKey());
         header.put(BizConstant.ContentType, BizConstant.contentFormValue);
-        return OkHttps.postFrom(authClient.getApiBaseUrl() + model.getUrl(), param, header,files);
+        return OkHttps.postFrom(authClient.getApiBaseUrl() + model.getUrl(), param, header,authClient.getProxy(),files);
     }
 
     public String get(String url){
         Map<String,String> header = new HashMap<>(8);
         header.put(BizConstant.Authorization,authClient.getApiKey());
         header.put(BizConstant.ContentType, BizConstant.contentFormValue);
-        return OkHttps.get(authClient.getApiBaseUrl()+url, header);
+        return OkHttps.get(authClient.getApiBaseUrl()+url, header,authClient.getProxy());
     }
 
     public String delete(String url){
         Map<String,String> header = new HashMap<>(8);
         header.put(BizConstant.Authorization,authClient.getApiKey());
         header.put(BizConstant.ContentType, BizConstant.contentFormValue);
-        return OkHttps.delete(authClient.getApiBaseUrl()+url, header);
+        return OkHttps.delete(authClient.getApiBaseUrl()+url, header,authClient.getProxy());
     }
 
 

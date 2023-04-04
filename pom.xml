@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.tonyandjoin</groupId>
     <artifactId>chat-gpt-sdk</artifactId>
-    <version>1.0.2-RELEASE</version>
+    <version>1.0.3-RELEASE</version>
     <name>chat-gpt-sdk</name>
     <description>project for chat-gpt-sdk</description>
     <url>https://github.com/TonyAndJoin/chat-gpt-sdk</url>
