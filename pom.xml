@@ -4,7 +4,10 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.tonyandjoin</groupId>
     <artifactId>chat-gpt-sdk</artifactId>
-    <version>1.0.0-RELEASE</version>
+    <version>1.0.2-RELEASE</version>
+    <name>chat-gpt-sdk</name>
+    <description>project for chat-gpt-sdk</description>
+    <url>https://github.com/TonyAndJoin/chat-gpt-sdk</url>
 
     <build>
         <plugins>
@@ -46,20 +49,20 @@
                     </execution>
                 </executions>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-gpg-plugin</artifactId>-->
-<!--                <version>1.5</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>sign-artifacts</id>-->
-<!--                        <phase>verify</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>sign</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -84,9 +87,6 @@
             </plugin>
         </plugins>
     </build>
-
-    <name>chat-gpt-sdk</name>
-    <description>Demo project for Spring Boot</description>
 
     <properties>
         <java.version>8</java.version>
